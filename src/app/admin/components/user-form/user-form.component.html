@@ -1,0 +1,68 @@
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input
+            class="input"
+            [class.is-danger]="userForm.controls.name.errors && userForm.controls.name.touched"
+            type="text"
+            formControlName="name" />
+            <p
+              class="help is-danger"
+              *ngIf="userForm.controls.name.errors && userForm.controls.name.touched">
+              <span *ngIf="userForm.controls.name.errors['required']">
+                El nombre es requerido
+              </span>
+              <span *ngIf="userForm.controls.name.errors['minlength']">
+                El nombre debe tener al menos 6 caracteres
+              </span>
+              <span *ngIf="userForm.controls.name.errors['maxlength']">
+                El nombre debe tener como maximo 20 caracteres
+              </span>
+            </p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [class.is-danger]="userForm.controls.email.errors && userForm.controls.email.touched"
+            formControlName="email" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            [class.is-danger]="userForm.controls.password.errors && userForm.controls.password.touched"
+            formControlName="password" />
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button
+            type="submit"
+            class="button is-link"
+            [disabled]="!userForm.valid"
+          >
+            {{ buttonText }}
+          </button>
+        </div>
+        <div class="control">
+          <button
+            type="button"
+            class="button is-link is-light"
+            (click)="onCancel()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

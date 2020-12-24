@@ -1,0 +1,9 @@
+
+<h2>Editar producto</h2>
+
+<app-product-form
+  *ngIf="product"
+  buttonText="Actualizar"
+  (saveProduct)="onSubmit($event)"
+  [product]="product"
+></app-product-form>

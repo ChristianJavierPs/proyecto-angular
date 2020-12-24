@@ -1,0 +1,76 @@
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label">Nombre</label>
+      <div class="control">
+        <input
+          class="input"
+          [class.is-danger]="productForm.controls.name.errors && productForm.controls.name.touched"
+          type="text"
+          formControlName="name" />
+          <p
+            class="help is-danger"
+            *ngIf="productForm.controls.name.errors && productForm.controls.name.touched">
+            <span *ngIf="productForm.controls.name.errors['required']">
+              El nombre es requerido
+            </span>
+            <span *ngIf="productForm.controls.name.errors['minlength']">
+              El nombre debe tener al menos 6 caracteres
+            </span>
+            <span *ngIf="productForm.controls.name.errors['maxlength']">
+              El nombre debe tener como maximo 20 caracteres
+            </span>
+          </p>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Detalle</label>
+      <div class="control">
+        <textarea
+          class="textarea"
+          [class.is-danger]="productForm.controls.description.errors && productForm.controls.description.touched"
+          formControlName="description"></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Stock</label>
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          [class.is-danger]="productForm.controls.stock.errors && productForm.controls.stock.touched"
+          formControlName="stock" />
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Precio</label>
+      <div class="control">
+        <input
+          class="input"
+          [class.is-danger]="productForm.controls.price.errors && productForm.controls.price.touched"
+          type="text"
+          formControlName="price" />
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button
+          type="submit"
+          class="button is-link"
+          [disabled]="!productForm.valid"
+        >
+          {{ buttonText }}
+        </button>
+      </div>
+      <div class="control">
+        <button
+          type="button"
+          class="button is-link is-light"
+          (click)="onCancel()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

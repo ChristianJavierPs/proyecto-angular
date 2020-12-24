@@ -1,0 +1,28 @@
+<h2>Lista de usuarios</h2>
+
+<a routerLink="../new-user">Nuevo usuario</a>
+
+<div class="container">
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td>Email</td>
+        <td>Password</td>
+        <td>Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let idx = index">
+        <td>{{idx + 1}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
+        <td>
+          <a [routerLink]="['../edit-user', user.id]">Editar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
